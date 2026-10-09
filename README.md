@@ -4,7 +4,7 @@ API load testing that identifies a catalogue bottleneck, measures its repair, an
 
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[Measured report](docs/report-preview.png) · [Raw evidence](measurements/)
+[Report preview](docs/report-preview.png) · [Raw evidence](measurements/)
 
 <!-- results:start -->
 | Measured operation | Broken | Fixed |
