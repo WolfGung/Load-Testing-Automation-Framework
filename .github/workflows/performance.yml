@@ -1,0 +1,44 @@
+name: Performance measurements
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: Workload profile
+        type: choice
+        options: [comparison, load, stress, spike, soak]
+        default: comparison
+      mode:
+        description: Implementation for a single run
+        type: choice
+        options: [fixed, broken]
+        default: fixed
+permissions:
+  contents: read
+jobs:
+  measure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PROFILE: ${{ inputs.profile }}
+      MODE: ${{ inputs.mode }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - run: python -m pip install -r requirements.lock && python -m pip install --no-deps -e .
+      - name: Measure the selected workload
+        run: |
+          if [ "$PROFILE" = comparison ]; then
+            python -m tools.compare --out results/comparison
+          else
+            python -m tools.run --profile "$PROFILE" --mode "$MODE" --out results/run
+            python -m tools.report --input results/run/summary.json --out results/report
+          fi
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: performance-evidence
+          path: results/

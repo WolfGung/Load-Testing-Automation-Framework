@@ -1,0 +1,23 @@
+{
+  "name": "comparison",
+  "purpose": "Same short workload for the broken and fixed catalogue.",
+  "warmup_seconds": 3,
+  "spawn_rate": 24,
+  "think_seconds": 0.05,
+  "stages": [
+    {
+      "until_seconds": 15,
+      "users": 24
+    }
+  ],
+  "thresholds": {
+    "max_error_ratio": 0.01,
+    "max_p95_ms": 500,
+    "min_requests": 30,
+    "required_routes": [
+      "GET /products",
+      "POST /carts/[id]/checkout",
+      "GET /orders/[id]"
+    ]
+  }
+}

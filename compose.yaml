@@ -1,0 +1,26 @@
+name: guru-load-testing
+services:
+  app:
+    build: .
+    environment:
+      APP_MODE: ${APP_MODE:-fixed}
+    ports:
+      - "127.0.0.1:8120:8120"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8120/health')"]
+      interval: 3s
+      timeout: 2s
+      retries: 15
+  locust:
+    build: .
+    depends_on:
+      app:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8089:8089"
+    environment:
+      LOAD_PROFILE: ${LOAD_PROFILE:-load}
+      LOAD_OUTPUT: /work/results/manual
+    volumes:
+      - ./results:/work/results
+    command: ["locust", "-f", "loadtest/locustfile.py", "--host", "http://app:8120", "--web-host", "0.0.0.0"]
