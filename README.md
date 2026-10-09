@@ -2,9 +2,11 @@
 
 API load testing that identifies a catalogue bottleneck, measures its repair, and produces evidence a client can inspect.
 
+[![CI](https://github.com/WolfGung/Load-Testing-Automation-Framework/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/WolfGung/Load-Testing-Automation-Framework/actions/workflows/ci.yml)
+[![Live report](https://img.shields.io/badge/live%20report-GitHub%20Pages-brightgreen)](https://wolfgung.github.io/Load-Testing-Automation-Framework/)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[Report preview](docs/report-preview.png) · [Raw evidence](measurements/)
+[Live measured report](https://wolfgung.github.io/Load-Testing-Automation-Framework/) · [Report preview](docs/report-preview.png) · [Raw evidence](measurements/)
 
 <!-- results:start -->
 | Measured operation | Broken | Fixed |
@@ -40,7 +42,7 @@ make compare
 `make compare` prints the before/after table and writes `results/comparison-<timestamp>/report/index.html`.
 Open that file in a browser. The report includes interactive resource charts and links to raw evidence.
 `make report` renders the committed measurement to `site/index.html` without running a load test.
-The screenshot above previews that report; no hosted report or remote CI status is claimed before publication.
+The preview comes from this report. The live report is built from the committed measurement on each push to main.
 
 The scripts refuse a nonempty output directory. Run outputs remain separate from the committed baseline.
 All reported RPS and latency values come from real HTTP requests to the local stand.
@@ -163,7 +165,7 @@ Publishing requires a repository with Pages configured to use GitHub Actions.
 
 [performance.yml](.github/workflows/performance.yml) runs only by manual dispatch. It collects workload evidence
 as a downloadable artifact. It does not replace the committed baseline or the published report. There is no schedule.
-Once the repository is published and its first CI run passes, add the push-only CI badge and verified Pages URL here.
+
 
 ## Adding this to a client pipeline
 
