@@ -1,0 +1,27 @@
+{
+  "profile": "soak",
+  "started": 1791555524.6988182,
+  "measurement_start": 1791555534.6988182,
+  "finished": 1791555835.2284636,
+  "duration_seconds": 310,
+  "thresholds": {
+    "max_error_ratio": 0.01,
+    "max_p95_ms": 500,
+    "min_requests": 30,
+    "required_routes": [
+      "GET /products",
+      "POST /carts/[id]/checkout",
+      "GET /orders/[id]"
+    ]
+  },
+  "stages": [
+    {
+      "until_seconds": 300,
+      "users": 20
+    }
+  ],
+  "warmup_seconds": 10,
+  "spawn_rate": 10,
+  "think_seconds": 0.15,
+  "generator_cpu_warning": false
+}

@@ -1,0 +1,31 @@
+{
+  "profile": "load",
+  "started": 1791555404.3372517,
+  "measurement_start": 1791555409.3372517,
+  "finished": 1791555439.4601672,
+  "duration_seconds": 35,
+  "thresholds": {
+    "max_error_ratio": 0.01,
+    "max_p95_ms": 500,
+    "min_requests": 30,
+    "required_routes": [
+      "GET /products",
+      "POST /carts/[id]/checkout",
+      "GET /orders/[id]"
+    ]
+  },
+  "stages": [
+    {
+      "until_seconds": 10,
+      "users": 8
+    },
+    {
+      "until_seconds": 30,
+      "users": 24
+    }
+  ],
+  "warmup_seconds": 5,
+  "spawn_rate": 8,
+  "think_seconds": 0.15,
+  "generator_cpu_warning": false
+}

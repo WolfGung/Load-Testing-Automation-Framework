@@ -57,6 +57,8 @@ The price service's I/O is deliberately simulated; this is a testing demonstrati
 | `make soak` | Hold load for a short demonstration | Inspect latency, memory and database growth |
 | `make compare` | Run broken and fixed with one profile | Compare identical configuration, with a fresh database per run |
 
+[Saved workload results](docs/workload-results.md) include raw evidence for every profile.
+
 Definitions and illustrative thresholds live in [profiles/](profiles/). They are not inferred from production traffic.
 `loadtest/config.py` validates stage boundaries. Increase soak duration for a real endurance investigation.
 Profiles set **concurrent users**, not arrival rate or RPS. Task weights are four browsing tasks to one purchase task;

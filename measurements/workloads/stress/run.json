@@ -1,0 +1,35 @@
+{
+  "profile": "stress",
+  "started": 1791555440.3754508,
+  "measurement_start": 1791555445.3754508,
+  "finished": 1791555483.471815,
+  "duration_seconds": 41,
+  "thresholds": {
+    "max_error_ratio": 0.01,
+    "max_p95_ms": 500,
+    "min_requests": 30,
+    "required_routes": [
+      "GET /products",
+      "POST /carts/[id]/checkout",
+      "GET /orders/[id]"
+    ]
+  },
+  "stages": [
+    {
+      "until_seconds": 12,
+      "users": 20
+    },
+    {
+      "until_seconds": 24,
+      "users": 60
+    },
+    {
+      "until_seconds": 36,
+      "users": 120
+    }
+  ],
+  "warmup_seconds": 5,
+  "spawn_rate": 30,
+  "think_seconds": 0.05,
+  "generator_cpu_warning": false
+}

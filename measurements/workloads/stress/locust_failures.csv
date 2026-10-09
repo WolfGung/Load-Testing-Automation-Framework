@@ -1,0 +1,4 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+GET,/products/[id],"CatchResponseError('Expected 200, got 503')",337,2026-10-09T14:17:49Z,2026-10-09T14:18:01Z
+GET,/products,"CatchResponseError('Expected 200, got 503')",2519,2026-10-09T14:17:49Z,2026-10-09T14:18:01Z
+POST,/carts/[id]/checkout,"CatchResponseError('Expected 201, got 503')",102,2026-10-09T14:17:49Z,2026-10-09T14:18:01Z

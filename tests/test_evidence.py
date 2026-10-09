@@ -24,3 +24,9 @@ def test_every_saved_request_metric_recomputes_from_raw_evidence():
     from tools.reproduce import reproduce
 
     reproduce(Path("measurements"))
+
+
+def test_workload_results_recompute_from_raw_requests():
+    from tools.workloads import render
+
+    assert render() in Path("docs/workload-results.md").read_text()

@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "profile": "load",
+    "started": 1791555404.3372517,
+    "measurement_start": 1791555409.3372517,
+    "finished": 1791555439.4601672,
+    "duration_seconds": 35,
+    "thresholds": {
+      "max_error_ratio": 0.01,
+      "max_p95_ms": 500,
+      "min_requests": 30,
+      "required_routes": [
+        "GET /products",
+        "POST /carts/[id]/checkout",
+        "GET /orders/[id]"
+      ]
+    },
+    "stages": [
+      {
+        "until_seconds": 10,
+        "users": 8
+      },
+      {
+        "until_seconds": 30,
+        "users": 24
+      }
+    ],
+    "warmup_seconds": 5,
+    "spawn_rate": 8,
+    "think_seconds": 0.15,
+    "generator_cpu_warning": false,
+    "mode": "fixed",
+    "python": "3.12.14",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+    "locust": "2.46.7",
+    "app_workers": 1,
+    "generator_processes": 1,
+    "same_host": true,
+    "locust_exit_code": 0
+  },
+  "total": {
+    "requests": 6586,
+    "failures": 0,
+    "error_ratio": 0.0,
+    "rps": 219.53333333333333,
+    "successful_rps": 219.53333333333333,
+    "p50_ms": 11.794948019087315,
+    "p95_ms": 13.377118855714798,
+    "p99_ms": 14.399397885426879
+  },
+  "routes": {
+    "DELETE /carts/[id]": {
+      "requests": 650,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 21.666666666666668,
+      "successful_rps": 21.666666666666668,
+      "p50_ms": 1.3192680198699236,
+      "p95_ms": 2.576997969299555,
+      "p99_ms": 3.8467429112643003
+    },
+    "GET /orders/[id]": {
+      "requests": 650,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 21.666666666666668,
+      "successful_rps": 21.666666666666668,
+      "p50_ms": 1.4818930067121983,
+      "p95_ms": 2.8574150055646896,
+      "p99_ms": 4.37294109724462
+    },
+    "GET /products": {
+      "requests": 2661,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 88.7,
+      "successful_rps": 88.7,
+      "p50_ms": 12.310185004025698,
+      "p95_ms": 13.639169977977872,
+      "p99_ms": 14.634528895840049
+    },
+    "GET /products/[id]": {
+      "requests": 653,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 21.766666666666666,
+      "successful_rps": 21.766666666666666,
+      "p50_ms": 12.286880984902382,
+      "p95_ms": 13.56608304195106,
+      "p99_ms": 15.269551891833544
+    },
+    "POST /carts": {
+      "requests": 653,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 21.766666666666666,
+      "successful_rps": 21.766666666666666,
+      "p50_ms": 1.6408609226346016,
+      "p95_ms": 3.0999102164059877,
+      "p99_ms": 5.002353107556701
+    },
+    "POST /carts/[id]/checkout": {
+      "requests": 650,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 21.666666666666668,
+      "successful_rps": 21.666666666666668,
+      "p50_ms": 12.302461080253124,
+      "p95_ms": 13.893076917156577,
+      "p99_ms": 15.870760893449187
+    },
+    "POST /carts/[id]/items": {
+      "requests": 653,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 21.766666666666666,
+      "successful_rps": 21.766666666666666,
+      "p50_ms": 1.5529461670666933,
+      "p95_ms": 3.1278631649911404,
+      "p99_ms": 4.457189003005624
+    },
+    "POST /sessions": {
+      "requests": 16,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 0.5333333333333333,
+      "successful_rps": 0.5333333333333333,
+      "p50_ms": 6.808754988014698,
+      "p95_ms": 9.902563877403736,
+      "p99_ms": 9.902563877403736
+    }
+  },
+  "stages": [
+    {
+      "until_seconds": 10,
+      "users": 8,
+      "from_seconds": 0,
+      "requests": 874,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 87.4,
+      "successful_rps": 87.4,
+      "p50_ms": 11.892440961673856,
+      "p95_ms": 13.068628963083029,
+      "p99_ms": 13.735020067542791
+    },
+    {
+      "until_seconds": 30,
+      "users": 24,
+      "from_seconds": 10,
+      "requests": 5712,
+      "failures": 0,
+      "error_ratio": 0.0,
+      "rps": 285.6,
+      "successful_rps": 285.6,
+      "p50_ms": 11.761333793401718,
+      "p95_ms": 13.430899009108543,
+      "p99_ms": 14.524202095344663
+    }
+  ],
+  "gate": {
+    "passed": true,
+    "reasons": []
+  },
+  "latency_method": "nearest-rank; requests started and completed within planned window; all outcomes",
+  "server_final": {
+    "mode": "fixed",
+    "price_calls": 4271,
+    "pool_active": 0,
+    "pool_waiting": 0,
+    "pool_timeouts": 0,
+    "pool_peak_active": 8,
+    "pool_wait_seconds": 0.12660295143723488,
+    "rss_bytes": 52318208,
+    "cpu_percent": 16.7,
+    "orders": 708,
+    "carts": 0,
+    "database_bytes": 282624
+  }
+}

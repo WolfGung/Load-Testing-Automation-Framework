@@ -19,6 +19,7 @@ def summarize(rows, duration):
         "failures": failures,
         "error_ratio": failures / len(rows) if rows else None,
         "rps": len(rows) / duration if duration > 0 else 0,
+        "successful_rps": (len(rows) - failures) / duration if duration > 0 else 0,
         "p50_ms": percentile(latencies, 0.50),
         "p95_ms": percentile(latencies, 0.95),
         "p99_ms": percentile(latencies, 0.99),

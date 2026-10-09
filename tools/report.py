@@ -58,6 +58,7 @@ def build(comparison, output, evidence=None):
                 fmt(m["p95_ms"]),
                 fmt(m["p99_ms"]),
                 fmt(m["rps"]),
+                fmt(m["successful_rps"]),
             ]
             for name, m in run["routes"].items()
         ]
@@ -104,7 +105,19 @@ def build(comparison, output, evidence=None):
         sections.append(
             f'<section id="{mode}"><p class="eyebrow">{mode.upper()} IMPLEMENTATION</p>'
             f"<h2>{html.escape(verdict)}</h2><p>{html.escape(explanation)}</p>"
-            + table(["Operation", "Requests", "Failures", "p50 ms", "p95 ms", "p99 ms", "RPS"], routes)
+            + table(
+                [
+                    "Operation",
+                    "Requests",
+                    "Failures",
+                    "p50 ms",
+                    "p95 ms",
+                    "p99 ms",
+                    "All RPS",
+                    "Successful RPS",
+                ],
+                routes,
+            )
             + "<h3>Stages</h3>"
             + table(["Window", "Target users", "Requests", "p95 ms", "Errors %"], stages)
             + f'<p class="files">{links}</p></section>'
