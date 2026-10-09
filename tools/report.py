@@ -72,15 +72,20 @@ def build(comparison, output, evidence=None):
             for s in run["stages"]
         ]
         links = ""
-        if evidence and (Path(evidence) / mode).is_dir():
+        source = (
+            (Path(evidence[mode]) if isinstance(evidence, dict) else Path(evidence) / mode)
+            if evidence
+            else None
+        )
+        if source and source.is_dir():
             destination = output / "evidence" / mode
-            shutil.copytree(Path(evidence) / mode, destination, dirs_exist_ok=True)
+            shutil.copytree(source, destination, dirs_exist_ok=True)
             links = " · ".join(
                 f'<a href="evidence/{mode}/{f}">{f}</a>'
                 for f in ("requests.csv", "metrics.csv", "summary.json", "locust.html", "locust.log")
             )
         chart_data = []
-        metrics = Path(evidence) / mode / "metrics.csv" if evidence else None
+        metrics = source / "metrics.csv" if source else None
         if metrics and metrics.exists():
             with metrics.open() as stream:
                 chart_data = [
@@ -135,9 +140,11 @@ def main():
     parser.add_argument("--evidence", type=Path)
     args = parser.parse_args()
     content = json.loads(args.input.read_text())
+    evidence = args.evidence
     if "runs" not in content:
+        evidence = {content["metadata"]["mode"]: args.input.parent}
         content = {"runs": [content]}
-    build(content, args.out, args.evidence)
+    build(content, args.out, evidence)
 
 
 if __name__ == "__main__":
